@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>星际救援指挥官 · Laya Mission Control</title>
+    <link rel="stylesheet" href="/rescue.css" />
+    <script src="/rescue.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="返回 Laya 游戏大厅"
+        ><span class="brand-mark">✦</span> LAYA
+        <span class="brand-sub">MISSION CONTROL</span></a
+      >
+      <span class="engine" id="engine">正在连接服务</span>
+      <a class="back" href="/">游戏大厅 ↗</a>
+    </header>
+    <main>
+      <div class="heading">
+        <div>
+          <p class="eyebrow">DEEP SPACE OPERATIONS / SECTOR 07</p>
+          <h1>星际救援指挥官<span>让每一次决策，都看得见。</span></h1>
+        </div>
+        <span class="live-pill" id="status">待命</span>
+      </div>
+      <div class="layout">
+        <section class="flight-panel" aria-label="救援星图与控制">
+          <div class="flight-top">
+            <span><i class="signal"></i> 救援星图 <small>战术视角</small></span
+            ><span id="turn">回合 00 / 30</span>
+          </div>
+          <div class="viewport">
+            <canvas
+              id="space"
+              role="img"
+              aria-label="飞船、待救援逃生舱、补给站和返航轨迹"
+            ></canvas>
+            <div class="map-title">
+              <span>ORBITAL RESCUE</span><strong>KEPLER · 07</strong
+              ><small>穿越风暴，把每个人带回家。</small>
+            </div>
+            <div class="map-legend">
+              <span class="cyan">● 逃生舱</span
+              ><span class="gold">◇ 补给站</span><span>◎ 母港</span>
+            </div>
+            <div class="center-message" id="center-message">
+              <b>指挥系统就绪</b><span>建立任务，开始一次真实的模型决策。</span>
+            </div>
+            <div class="map-bottom">
+              <span id="flight-caption">等待建立任务</span
+              ><span id="division">星图为程序绘制 · Laya 负责行动选择</span>
+            </div>
+          </div>
+          <div class="telemetry">
+            <div>
+              <label>燃料储备</label
+              ><strong id="fuel">—<small>/ 100</small></strong
+              ><meter
+                id="fuel-meter"
+                min="0"
+                max="100"
+                value="0"
+                aria-label="燃料"
+              ></meter>
+            </div>
+            <div>
+              <label>船体完整度</label
+              ><strong id="hull">—<small>/ 100</small></strong
+              ><meter
+                id="hull-meter"
+                min="0"
+                max="100"
+                value="0"
+                aria-label="船体完整度"
+              ></meter>
+            </div>
+            <div>
+              <label>星区风暴</label
+              ><strong id="threat">—<small>/ 100</small></strong
+              ><meter
+                id="threat-meter"
+                min="0"
+                max="100"
+                value="0"
+                aria-label="风暴强度"
+              ></meter>
+            </div>
+            <div class="crew">
+              <label>已接回 / 已送达</label
+              ><strong id="crew">0 <small>/</small> 0</strong
+              ><span id="score">任务得分 0</span>
+            </div>
+          </div>
+          <div class="controls">
+            <button class="primary" id="play">开始任务</button
+            ><button id="step">单步决策</button
+            ><button id="new">重建任务</button
+            ><span class="speed"
+              ><label for="speed">节奏</label
+              ><select id="speed">
+                <option value="1500">舒缓</option>
+                <option value="850">流畅</option>
+                <option value="2500">讲解</option>
+              </select></span
+            >
+          </div>
+          <div class="event-row">
+            <span>现场干预</span><button id="storm">✧ 陨石风暴</button
+            ><button id="leak">↘ 燃料泄漏</button
+            ><span class="event-help">改变环境，观察下一轮选择</span>
+          </div>
+          <div class="manual" id="manual" hidden>
+            <span>手动驾驶</span><button data-action="rescue">救援</button
+            ><button data-action="evade">避险</button
+            ><button data-action="refuel">补给</button
+            ><button data-action="return">返航</button>
+          </div>
+          <div id="notice" role="status" aria-live="polite">
+            每轮包含 3 次模型推理。开始后可随时暂停，也可逐步观察。
+          </div>
+        </section>
+        <aside>
+          <section class="decision-panel panel">
+            <div class="section-title">
+              <h2>决策直播</h2>
+              <span class="tag" id="source">LAYA / NPU</span>
+            </div>
+            <div class="action-pair">
+              <div>
+                <label>原始选择</label><strong id="proposed">等待决策</strong>
+              </div>
+              <span>→</span>
+              <div><label>实际执行</label><strong id="executed">—</strong></div>
+            </div>
+            <div class="guard-note" id="guard-note">尚未执行决策</div>
+            <div id="probabilities" class="probabilities"></div>
+            <div class="decision-metrics">
+              <div>
+                <label>风险评分 <small>0–2</small></label
+                ><strong id="risk">—</strong>
+              </div>
+              <div>
+                <label>立即返航概率</label><strong id="emergency">—</strong>
+              </div>
+              <div>
+                <label>NPU 耗时 / 轮</label><strong id="latency">—</strong>
+              </div>
+            </div>
+            <div class="stats-line">
+              <span id="calls">NPU 推理 0 次</span
+              ><span id="guards">保护介入 0 次</span>
+            </div>
+          </section>
+          <section class="panel setup">
+            <div class="section-title">
+              <h2>任务设置</h2>
+              <span class="muted">重建任务后生效</span>
+            </div>
+            <div class="field-row">
+              <label
+                >驾驶员<select id="mode">
+                  <option value="laya">Laya · 算力卡</option>
+                  <option value="rule">固定规则 · 对照</option>
+                  <option value="human">手动驾驶</option>
+                </select></label
+              ><label
+                >初始场景<select id="scenario">
+                  <option value="standard">常规救援</option>
+                  <option value="storm">强风暴</option>
+                  <option value="low_fuel">低燃料</option>
+                </select></label
+              >
+            </div>
+            <label class="mission-label" for="mission">一句话任务</label
+            ><textarea id="mission" rows="2" maxlength="80">
+优先救人，保留返航燃料。</textarea
+            >
+            <div class="field-row compact">
+              <label
+                >地图种子<input
+                  id="seed"
+                  type="number"
+                  min="0"
+                  max="2147483647"
+                  value="42" /></label
+              ><label class="checkbox"
+                ><input type="checkbox" id="guarded" checked />
+                启用返航保护</label
+              >
+            </div>
+            <p class="hint">
+              相同种子、场景和干预可复现环境。规则与手动模式不调用 NPU。
+            </p>
+          </section>
+          <section class="panel log-panel">
+            <div class="section-title">
+              <h2>飞行记录</h2>
+              <button class="text-button" id="export">导出 JSON ↗</button>
+            </div>
+            <ol id="log">
+              <li class="empty">任务尚未开始</li>
+            </ol>
+          </section>
+        </aside>
+      </div>
+      <details class="transparency">
+        <summary>
+          查看本轮输入与输出 <span>客观状态 / 动作成本 / 原始概率</span>
+        </summary>
+        <p>
+          模型选择救援、避险、补给或返航；程序完成导航与动画。保护规则只排除不可执行、致命或耗尽返航燃料的动作。概率是模型输出，不代表经过校准的任务成功率。
+        </p>
+        <pre id="raw">暂无决策数据</pre>
+      </details>
+      <footer>
+        <span>LAYA × AXERA · ON-DEVICE DECISIONS</span
+        ><span
+          >送达 1 人得 150 分 · 30 回合内返航 · 风暴表示整个星区的危险强度</span
+        >
+      </footer>
+    </main>
+  </body>
+</html>

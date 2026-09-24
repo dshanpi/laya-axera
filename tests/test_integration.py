@@ -49,3 +49,20 @@ def test_matches_board_validated_choices(agent):
             assert abs(ours["score"] - answer["score"]) < 0.15
         else:
             assert abs(ours["noul"] - answer["noul"]) < 0.1
+
+
+def test_rescue_prompt_fits_without_state_truncation(agent):
+    from laya_axera.rescue.game import RescueGame
+    from laya_axera.rescue.policy import build_request, check_budget
+
+    game = RescueGame(mission="优先救人，保留返航燃料。")
+    for scenario in ("standard", "storm", "low_fuel"):
+        game = RescueGame(scenario=scenario, mission=game.mission)
+        request = build_request(game)
+        counts = check_budget(agent, request)
+        for name, question in request["questions"].items():
+            _, _, encoded_count = agent.encode_question(request["state"], question)
+            assert encoded_count == counts[name] <= agent.seq_len
+    game.mission = "rescue " * agent.seq_len
+    with pytest.raises(ValueError, match="token budget"):
+        check_budget(agent, build_request(game))

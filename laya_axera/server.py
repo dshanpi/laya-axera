@@ -1,4 +1,4 @@
-"""FastAPI web demo: a typed-decision playground and a Laya-driven Snake game."""
+"""FastAPI typed-decision playground and Laya-driven games, including Star Rescue."""
 
 import json
 import threading
@@ -18,6 +18,7 @@ from .breakout.game import BreakoutGame
 from .breakout.policy import LayaBreakoutPolicy
 from .flappy.game import FlappyGame
 from .flappy.policy import LayaFlappyPolicy
+from .rescue.api import rescue_router
 from .snake.game import SnakeGame
 from .snake.policy import LayaPolicy
 from .tetris.game import TetrisGame
@@ -63,16 +64,14 @@ class ModelRegistry:
             if agent is not None:
                 return agent
             self._loading.add(name)
-        try:
-            agent = Agent(
-                self.checkpoints[name], device_id=self.device_id, provider=self.provider
-            )
-        except Exception as exc:
-            with self._lock:
+            try:
+                agent = Agent(
+                    self.checkpoints[name], device_id=self.device_id, provider=self.provider
+                )
+            except Exception as exc:
                 self._loading.discard(name)
                 self._errors[name] = str(exc)
-            raise HTTPException(500, f"Failed to load {name!r}: {exc}")
-        with self._lock:
+                raise HTTPException(500, f"Failed to load {name!r}: {exc}") from exc
             self._loading.discard(name)
             self._errors.pop(name, None)
             self._agents[name] = agent
@@ -385,6 +384,8 @@ def create_app(checkpoints: Dict[str, Path], *, device_id=0, provider=None) -> F
             "stats": stats,
             "done": not game.alive or game.won,
         }
+
+    app.include_router(rescue_router(registry))
 
     if WEB_DIR.is_dir():
         app.mount("/", StaticFiles(directory=WEB_DIR, html=True), name="web")

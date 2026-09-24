@@ -4,7 +4,7 @@
 
 Python inference for the [AXERA-TECH/Laya](https://huggingface.co/AXERA-TECH/Laya) AXModel
 checkpoints through [PyAXEngine](https://github.com/AXERA-TECH/pyaxengine), with a web demo:
-a decision playground and a Snake game where every move is a real NPU decision.
+a decision playground, Snake, Flappy Bird, Tetris, Breakout, and Star Rescue.
 
 **~31 ms** per question with the multilingual checkpoint on one AX8850 (AXCL). **0 output
 tokens.** No PyTorch, no Transformers runtime, no cloud API — tokenization uses Hugging
@@ -22,6 +22,21 @@ structured state in one forward pass, without generating text.
 - `score`: probabilities over 2–4 ordered rubric levels and their expected score.
 - `noul`: P(true) for a proposition.
 
+## Star Rescue Commander
+
+A space rescue game with animated flight paths, shields and rescue beams. Laya selects
+rescue, evade, refuel or return on the NPU. The dashboard shows raw action probabilities,
+risk, immediate-return probability, and measured inference time. Inject storms or fuel
+leaks, edit the mission, or compare a fixed-rule pilot and manual control on the same seed.
+
+Open `/rescue.html` after starting the server. See the
+[deployment guide and measured results (Chinese)](docs/rescue.zh-CN.md).
+
+![Star Rescue running on RK3576 with an AX8850 16GB card](docs/rescue-desktop.png)
+
+Model choices and guard interventions are reported separately. The current checkpoint
+can return prematurely; the guide reports this behavior alongside successful delivery.
+
 ## Supported platforms
 
 | Platform | Provider | Notes |
@@ -34,7 +49,7 @@ The provider is selected automatically; pass `provider=` to force one.
 ## Install
 
 ```bash
-git clone https://github.com/AXERA-TECH/laya-axera.git
+git clone https://github.com/dshanpi/laya-axera.git
 cd laya-axera
 pip install -e '.[web]'
 ```

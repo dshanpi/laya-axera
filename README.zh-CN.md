@@ -4,7 +4,7 @@
 
 基于 [PyAXEngine](https://github.com/AXERA-TECH/pyaxengine) 推理
 [AXERA-TECH/Laya](https://huggingface.co/AXERA-TECH/Laya) 的 AXModel checkpoint，
-并提供网页演示：决策台 + 每一步都由 Laya 实时决策的贪吃蛇。
+并提供决策台、贪吃蛇、Flappy Bird、俄罗斯方块、打方块和星际救援网页演示。
 
 单张 AX8850（AXCL）上 multilingual checkpoint **约 31 ms/问题**，**0 个输出 token**。
 不依赖 PyTorch / Transformers 运行时 / 云端 API —— 分词用 Hugging Face Rust tokenizer，
@@ -21,6 +21,18 @@ Laya 是双向决策模型：对文本或结构化状态回答受约束的问题
 - `score`：在 2–4 个有序等级上给出概率与期望分。
 - `noul`：命题成立的概率 P(true)。
 
+## 星际救援指挥官
+
+新增太空救援场景：Laya 选择救援、避险、补给或返航，星图展示飞行、护盾、救援光束和航迹。
+页面同步展示四项概率、风险评分、返航概率与 NPU 耗时，支持注入风暴、燃料泄漏以及一句话任务。
+可切换固定规则和手动驾驶，在相同地图上对照观察。
+
+[部署与实测效果](docs/rescue.zh-CN.md) · 启动服务后打开 `/rescue.html`
+
+![RK3576 + AX8850 16GB 上运行星际救援](docs/rescue-desktop.png)
+
+模型原始选择与保护规则介入分别显示。当前模型在部分场景会提前返航，具体实测结果和范围见部署指南。
+
 ## 支持平台
 
 | 平台 | Provider | 说明 |
@@ -33,7 +45,7 @@ Provider 自动选择，也可通过 `provider=` 强制指定。
 ## 安装
 
 ```bash
-git clone https://github.com/AXERA-TECH/laya-axera.git
+git clone https://github.com/dshanpi/laya-axera.git
 cd laya-axera
 pip install -e '.[web]'
 ```
