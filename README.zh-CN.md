@@ -4,7 +4,7 @@
 
 基于 [PyAXEngine](https://github.com/AXERA-TECH/pyaxengine) 推理
 [AXERA-TECH/Laya](https://huggingface.co/AXERA-TECH/Laya) 的 AXModel checkpoint，
-并提供决策台、贪吃蛇、Flappy Bird、俄罗斯方块、打方块和星际救援网页演示。
+并提供决策台、贪吃蛇、Flappy Bird、俄罗斯方块、打方块、星际救援和 3D 机甲训练场。
 
 单张 AX8850（AXCL）上 multilingual checkpoint **约 31 ms/问题**，**0 个输出 token**。
 不依赖 PyTorch / Transformers 运行时 / 云端 API —— 分词用 Hugging Face Rust tokenizer，
@@ -20,6 +20,19 @@ Laya 是双向决策模型：对文本或结构化状态回答受约束的问题
 - `choice`：在 2–4 个命名选项上给出概率分布。
 - `score`：在 2–4 个有序等级上给出概率与期望分。
 - `noul`：命题成立的概率 P(true)。
+
+## AI 机甲训练场
+
+输入中文指令，Laya 在算力卡上选择进攻、防御、撤退或待命，3D 机甲立即执行。
+场景包含能量护盾、弹道、掩体、爆炸和双对手训练；支持现场增加敌人、降低装甲和生成掩体。
+右侧显示真实概率、NPU 耗时和指挥记录。快捷指令也调用模型，手动操作单独标记。
+
+[准备、下载、运行与实测效果](docs/mech.zh-CN.md) · 服务启动后打开 `/mech.html`
+
+![Laya 机甲训练场实际界面](docs/mech-desktop.png)
+
+RK3576 + AX8850 16GB 已完成四种动作测试。22 条中文测试指令中 19 条符合预期；
+30 次 NPU 推理平均 31.7 ms。误判原样保留，立即停止训练使用独立的暂停按钮。
 
 ## 星际救援指挥官
 

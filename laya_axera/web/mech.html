@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AI 机甲训练场 · Laya Mech Arena</title>
+    <link rel="stylesheet" href="/mech.css" />
+    <script type="module" src="/mech.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/" aria-label="返回游戏大厅"
+        ><svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="m8 9 8 5 8-5 8 5 8-5-3 24-13 10-13-10z" />
+          <path d="m15 20 9 5 9-5-3 12-6 5-6-5z" />
+          <path d="m17 6 7 5 7-5M6 16l-3 8 8 10M42 16l3 8-8 10" /></svg
+        ><strong>AI 机甲训练场</strong><span>LAYA / MECH ARENA</span></a
+      >
+      <div class="header-right">
+        <span id="engine">连接算力卡服务…</span><a href="/">游戏大厅 ↗</a>
+      </div>
+    </header>
+    <main>
+      <div class="workspace">
+        <section class="arena-column">
+          <div class="viewport" id="viewport">
+            <canvas
+              id="arena"
+              aria-label="可拖动旋转的机甲训练场：蓝白机甲、红色对手、掩体和飞行中的能量弹"
+            ></canvas>
+            <div class="stage-title">
+              <span>训练场 01</span>
+              <h1>装甲交锋</h1>
+              <small>输入一句话，改变下一次行动。</small>
+            </div>
+            <div class="stage-status">
+              <span class="dot"></span><span id="stage-state">准备训练</span
+              ><span id="time">00:00</span>
+            </div>
+            <div class="view-tools">
+              <button id="camera" title="切换战术与近景视角">◈ 切换视角</button
+              ><select id="quality" aria-label="画质">
+                <option value="balanced">均衡画质</option>
+                <option value="low">流畅画质</option>
+                <option value="high">高画质</option></select
+              ><button id="sound" aria-pressed="false">音效：关</button>
+            </div>
+            <div id="center" class="center-message">
+              <div class="kicker">SYSTEM ONLINE</div>
+              <h2>等待你的第一条指令</h2>
+              <p>试试“别开火，先保护自己。”</p>
+              <small>拖动旋转视角 · 滚轮缩放 · 空格暂停</small>
+            </div>
+            <div class="hud">
+              <div>
+                <span>装甲</span>
+                <div class="track"><i id="armor-bar"></i></div>
+                <b id="armor">100</b>
+              </div>
+              <div>
+                <span>能量</span>
+                <div class="track"><i id="energy-bar"></i></div>
+                <b id="energy">100</b>
+              </div>
+              <div class="hud-details">
+                <span id="kills">击败 0 / 1</span
+                ><span id="blocked">护盾拦截 0</span>
+              </div>
+            </div>
+            <div class="viewport-foot">
+              <span id="motion">动作：待命</span
+              ><span id="graphics">正在创建 3D 场景…</span>
+            </div>
+          </div>
+          <section class="command-console">
+            <form id="command-form">
+              <label for="command"
+                >用一句话<br /><strong>指挥机甲</strong></label
+              >
+              <div class="input-wrap">
+                <input
+                  id="command"
+                  maxlength="120"
+                  autocomplete="off"
+                  value="别开火，先保护自己。"
+                  placeholder="例如：向敌人开火。"
+                  aria-describedby="command-help"
+                /><span id="input-state">ENTER ↵</span>
+              </div>
+              <button type="submit" id="send" class="primary">
+                发送指令 ↗
+              </button>
+            </form>
+            <div class="suggestions">
+              <button data-command="别开火，先保护自己。">开启防御</button
+              ><button data-command="继续进攻。">继续进攻</button
+              ><button data-command="先撤到掩体后。">撤到掩体后</button
+              ><button data-command="原地待命。">原地待命</button><span></span
+              ><button id="pause" class="pause">Ⅱ 暂停训练</button
+              ><button id="reset">↻ 重置</button>
+            </div>
+            <p id="command-help">
+              快捷指令也会经过 Laya
+              推理。支持进攻、防御、撤退和待命；需要立即停止时使用暂停按钮。
+            </p>
+            <div id="notice" role="status" aria-live="polite">
+              正在连接训练服务…
+            </div>
+          </section>
+        </section>
+        <aside>
+          <div class="panel decision-panel">
+            <div class="panel-heading">
+              <h2>Laya 决策面板</h2>
+              <span id="source" class="pill">等待指令</span>
+            </div>
+            <div class="current-command">
+              <label>当前指令</label>
+              <p id="last-command">尚未发送</p>
+            </div>
+            <div class="probabilities">
+              <h3>动作概率 <span>模型原始输出</span></h3>
+              <div id="prob-list"></div>
+            </div>
+            <div class="execution">
+              <div class="shield-icon" id="action-icon">◇</div>
+              <div>
+                <label>执行动作</label><strong id="action">等待指令</strong>
+              </div>
+            </div>
+            <div class="metrics">
+              <div>
+                <label>NPU 推理耗时</label
+                ><strong id="latency">— <small>ms</small></strong>
+              </div>
+              <div>
+                <label>模型</label
+                ><strong id="model" class="model-name">尚未推理</strong>
+              </div>
+            </div>
+            <div class="confidence">
+              <span id="inference-count">NPU 调用 0 次</span
+              ><span id="distribution">—</span>
+            </div>
+          </div>
+          <div class="panel interventions">
+            <div class="panel-heading">
+              <h2>现场干预</h2>
+              <span>改变战况</span>
+            </div>
+            <div class="event-buttons">
+              <button data-event="enemy"><b>⊕</b>增加敌人</button
+              ><button data-event="armor"><b>⬡</b>降低装甲</button
+              ><button data-event="cover"><b>▱</b>生成掩体</button>
+            </div>
+            <div class="settings">
+              <label for="difficulty">训练模式</label
+              ><select id="difficulty">
+                <option value="training">基础训练 · 单对手</option>
+                <option value="challenge">进阶训练 · 双对手</option>
+              </select>
+            </div>
+            <p>模式切换在重置后生效。每场最多 180 秒。</p>
+          </div>
+          <div class="panel record-panel">
+            <div class="panel-heading">
+              <h2>指挥记录</h2>
+              <button id="export" class="text-button">导出 JSON ↗</button>
+            </div>
+            <ol id="history">
+              <li>等待第一条指令</li>
+            </ol>
+          </div>
+        </aside>
+      </div>
+      <section class="lower">
+        <details>
+          <summary>查看真实输入与输出</summary>
+          <p>
+            模型选择行动，CPU 负责导航、碰撞和结算，浏览器负责 3D
+            渲染。模型概率不代表实际成功率，误判会原样显示。手动操作单独标记，不调用模型。
+          </p>
+          <pre id="raw">尚无模型输出</pre>
+        </details>
+        <details>
+          <summary>手动驾驶 · 对照演示</summary>
+          <div class="manual">
+            <button data-manual="attack">进攻</button
+            ><button data-manual="defend">防御</button
+            ><button data-manual="retreat">撤退</button
+            ><button data-manual="hold">待命</button>
+          </div>
+          <p>
+            这些按钮直接选择动作，用于对照动画和游戏规则，面板将标记“手动操作”。
+          </p>
+        </details>
+      </section>
+      <footer>
+        <span>LAYA × AXERA <i>ON-DEVICE DECISIONS</i></span
+        ><span>模型负责行动选择，程序负责动画与物理。</span>
+      </footer>
+    </main>
+  </body>
+</html>

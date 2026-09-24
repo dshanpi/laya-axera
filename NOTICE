@@ -18,3 +18,9 @@ package (https://huggingface.co/AXERA-TECH/Laya, Apache-2.0).
 
 Model weights are downloaded separately from the AXERA-TECH/Laya package on
 Hugging Face; they are not included in this repository.
+
+The Mech Arena browser renderer includes Three.js r170 (MIT):
+https://github.com/mrdoob/three.js/tree/r170
+Copyright 2010-2024 Three.js authors.
+The complete MIT license is retained at laya_axera/web/vendor/three.LICENSE.
+The procedural mech models and arena are implemented in this repository.

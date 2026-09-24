@@ -4,7 +4,7 @@
 
 Python inference for the [AXERA-TECH/Laya](https://huggingface.co/AXERA-TECH/Laya) AXModel
 checkpoints through [PyAXEngine](https://github.com/AXERA-TECH/pyaxengine), with a web demo:
-a decision playground, Snake, Flappy Bird, Tetris, Breakout, and Star Rescue.
+a decision playground, Snake, Flappy Bird, Tetris, Breakout, Star Rescue, and a 3D Mech Arena.
 
 **~31 ms** per question with the multilingual checkpoint on one AX8850 (AXCL). **0 output
 tokens.** No PyTorch, no Transformers runtime, no cloud API — tokenization uses Hugging
@@ -21,6 +21,23 @@ structured state in one forward pass, without generating text.
 - `choice`: probabilities over 2–4 named options.
 - `score`: probabilities over 2–4 ordered rubric levels and their expected score.
 - `noul`: P(true) for a proposition.
+
+## Laya Mech Arena
+
+Give a Chinese command and watch a 3D mech attack, raise its shield, retreat behind
+cover, or hold position. Laya selects one action on the NPU; server-side navigation
+and combat execute it. The dashboard shows raw probabilities, measured NPU latency,
+and command history. Add enemies or cover, reduce armor, switch cameras, or compare
+explicitly labelled manual control. Browser assets are bundled for offline use.
+
+Open `/mech.html` after starting the server. See the
+[deployment guide and measured results (Chinese)](docs/mech.zh-CN.md).
+
+![Laya Mech Arena, actual application screenshot](docs/mech-desktop.png)
+
+Tested on RK3576 + AX8850 16GB: all four action flows passed, 19 of 22 Chinese
+test commands matched their expected intent, and 30 NPU calls averaged 31.7 ms.
+Misclassifications are shown unchanged; the pause button works independently.
 
 ## Star Rescue Commander
 

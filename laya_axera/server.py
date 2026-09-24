@@ -1,4 +1,4 @@
-"""FastAPI typed-decision playground and Laya-driven games, including Star Rescue."""
+"""FastAPI typed-decision playground and Laya-driven games."""
 
 import json
 import threading
@@ -18,6 +18,7 @@ from .breakout.game import BreakoutGame
 from .breakout.policy import LayaBreakoutPolicy
 from .flappy.game import FlappyGame
 from .flappy.policy import LayaFlappyPolicy
+from .mech.api import mech_router
 from .rescue.api import rescue_router
 from .snake.game import SnakeGame
 from .snake.policy import LayaPolicy
@@ -386,6 +387,7 @@ def create_app(checkpoints: Dict[str, Path], *, device_id=0, provider=None) -> F
         }
 
     app.include_router(rescue_router(registry))
+    app.include_router(mech_router(registry))
 
     if WEB_DIR.is_dir():
         app.mount("/", StaticFiles(directory=WEB_DIR, html=True), name="web")

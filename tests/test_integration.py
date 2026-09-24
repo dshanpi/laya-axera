@@ -66,3 +66,23 @@ def test_rescue_prompt_fits_without_state_truncation(agent):
     game.mission = "rescue " * agent.seq_len
     with pytest.raises(ValueError, match="token budget"):
         check_budget(agent, build_request(game))
+
+
+def test_mech_real_choices_and_full_prompt_budget(agent):
+    from laya_axera.mech.game import MechGame
+    from laya_axera.mech.policy import decide
+
+    game = MechGame()
+    for command, action in [
+        ("继续进攻。", "attack"),
+        ("别开火，先保护自己。", "defend"),
+        ("先撤到掩体后。", "retreat"),
+        ("原地待命。", "hold"),
+    ]:
+        result = decide(agent, command, game)
+        assert result["action"] == action
+        request = result["request"]
+        _, _, count = agent.encode_question(request["state"], request["questions"]["action"])
+        assert result["input_tokens"] == count <= agent.seq_len
+    with pytest.raises(ValueError, match="长度限制"):
+        decide(agent, "等待 " * agent.seq_len, game)

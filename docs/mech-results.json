@@ -1,0 +1,2120 @@
+{
+  "tested_at": "2026-09-24T12:26:32+0800",
+  "method": "Real /api/mech/command, one Laya forward per instruction; explicit server physics ticks.",
+  "classification": [
+    {
+      "command": "别开火，先保护自己。",
+      "expected": "defend",
+      "group": "development",
+      "match": true,
+      "http_ms": 13210.572,
+      "source": "laya",
+      "action": "defend",
+      "probabilities": {
+        "attack": 0.0053,
+        "defend": 0.8273,
+        "retreat": 0.154,
+        "hold": 0.0134
+      },
+      "npu_ms": 35.606,
+      "decision_ms": 38.487,
+      "request": {
+        "state": "Operator instruction: 别开火，先保护自己。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.6173,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 35.606,
+          "choice": "defend",
+          "probabilities": {
+            "attack": 0.0053,
+            "defend": 0.8273,
+            "retreat": 0.154,
+            "hold": 0.0134
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 79
+    },
+    {
+      "command": "继续进攻。",
+      "expected": "attack",
+      "group": "development",
+      "match": true,
+      "http_ms": 48.876,
+      "source": "laya",
+      "action": "attack",
+      "probabilities": {
+        "attack": 0.986,
+        "defend": 0.0064,
+        "retreat": 0.003,
+        "hold": 0.0047
+      },
+      "npu_ms": 31.009,
+      "decision_ms": 33.257,
+      "request": {
+        "state": "Operator instruction: 继续进攻。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.9362,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.009,
+          "choice": "attack",
+          "probabilities": {
+            "attack": 0.986,
+            "defend": 0.0064,
+            "retreat": 0.003,
+            "hold": 0.0047
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 75
+    },
+    {
+      "command": "向敌人开火。",
+      "expected": "attack",
+      "group": "development",
+      "match": true,
+      "http_ms": 47.858,
+      "source": "laya",
+      "action": "attack",
+      "probabilities": {
+        "attack": 0.9993,
+        "defend": 0.0004,
+        "retreat": 0.0002,
+        "hold": 0.0002
+      },
+      "npu_ms": 30.506,
+      "decision_ms": 32.07,
+      "request": {
+        "state": "Operator instruction: 向敌人开火。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.9951,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 30.506,
+          "choice": "attack",
+          "probabilities": {
+            "attack": 0.9993,
+            "defend": 0.0004,
+            "retreat": 0.0002,
+            "hold": 0.0002
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 76
+    },
+    {
+      "command": "我不是让你撤退，继续进攻。",
+      "expected": "attack",
+      "group": "development",
+      "match": true,
+      "http_ms": 55.813,
+      "source": "laya",
+      "action": "attack",
+      "probabilities": {
+        "attack": 0.9883,
+        "defend": 0.0047,
+        "retreat": 0.003,
+        "hold": 0.004
+      },
+      "npu_ms": 31.898,
+      "decision_ms": 36.663,
+      "request": {
+        "state": "Operator instruction: 我不是让你撤退，继续进攻。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.9449,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.898,
+          "choice": "attack",
+          "probabilities": {
+            "attack": 0.9883,
+            "defend": 0.0047,
+            "retreat": 0.003,
+            "hold": 0.004
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 79
+    },
+    {
+      "command": "先撤到掩体后。",
+      "expected": "retreat",
+      "group": "development",
+      "match": true,
+      "http_ms": 47.663,
+      "source": "laya",
+      "action": "retreat",
+      "probabilities": {
+        "attack": 0.0005,
+        "defend": 0.0016,
+        "retreat": 0.9967,
+        "hold": 0.0012
+      },
+      "npu_ms": 31.913,
+      "decision_ms": 35.45,
+      "request": {
+        "state": "Operator instruction: 先撤到掩体后。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.9816,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.913,
+          "choice": "retreat",
+          "probabilities": {
+            "attack": 0.0005,
+            "defend": 0.0016,
+            "retreat": 0.9967,
+            "hold": 0.0012
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 78
+    },
+    {
+      "command": "撤离交战区。",
+      "expected": "retreat",
+      "group": "development",
+      "match": true,
+      "http_ms": 44.966,
+      "source": "laya",
+      "action": "retreat",
+      "probabilities": {
+        "attack": 0.0055,
+        "defend": 0.0006,
+        "retreat": 0.9927,
+        "hold": 0.0012
+      },
+      "npu_ms": 30.815,
+      "decision_ms": 33.59,
+      "request": {
+        "state": "Operator instruction: 撤离交战区。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.9649,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 30.815,
+          "choice": "retreat",
+          "probabilities": {
+            "attack": 0.0055,
+            "defend": 0.0006,
+            "retreat": 0.9927,
+            "hold": 0.0012
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 78
+    },
+    {
+      "command": "原地待命。",
+      "expected": "hold",
+      "group": "development",
+      "match": true,
+      "http_ms": 43.21,
+      "source": "laya",
+      "action": "hold",
+      "probabilities": {
+        "attack": 0.0015,
+        "defend": 0.0594,
+        "retreat": 0.0095,
+        "hold": 0.9296
+      },
+      "npu_ms": 30.745,
+      "decision_ms": 33.359,
+      "request": {
+        "state": "Operator instruction: 原地待命。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.7911,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 30.745,
+          "choice": "hold",
+          "probabilities": {
+            "attack": 0.0015,
+            "defend": 0.0594,
+            "retreat": 0.0095,
+            "hold": 0.9296
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 76
+    },
+    {
+      "command": "停下来，不要移动。",
+      "expected": "hold",
+      "group": "development",
+      "match": true,
+      "http_ms": 43.259,
+      "source": "laya",
+      "action": "hold",
+      "probabilities": {
+        "attack": 0.002,
+        "defend": 0.169,
+        "retreat": 0.0498,
+        "hold": 0.7792
+      },
+      "npu_ms": 31.677,
+      "decision_ms": 34.709,
+      "request": {
+        "state": "Operator instruction: 停下来，不要移动。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.5263,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.677,
+          "choice": "hold",
+          "probabilities": {
+            "attack": 0.002,
+            "defend": 0.169,
+            "retreat": 0.0498,
+            "hold": 0.7792
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 78
+    },
+    {
+      "command": "打开护盾，挡住炮火。",
+      "expected": "defend",
+      "group": "development",
+      "match": true,
+      "http_ms": 42.432,
+      "source": "laya",
+      "action": "defend",
+      "probabilities": {
+        "attack": 0.0004,
+        "defend": 0.9991,
+        "retreat": 0.0002,
+        "hold": 0.0003
+      },
+      "npu_ms": 31.949,
+      "decision_ms": 34.211,
+      "request": {
+        "state": "Operator instruction: 打开护盾，挡住炮火。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.9939,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.949,
+          "choice": "defend",
+          "probabilities": {
+            "attack": 0.0004,
+            "defend": 0.9991,
+            "retreat": 0.0002,
+            "hold": 0.0003
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 80
+    },
+    {
+      "command": "不要进攻，先防御。",
+      "expected": "defend",
+      "group": "development",
+      "match": true,
+      "http_ms": 42.293,
+      "source": "laya",
+      "action": "defend",
+      "probabilities": {
+        "attack": 0.0012,
+        "defend": 0.9944,
+        "retreat": 0.003,
+        "hold": 0.0014
+      },
+      "npu_ms": 31.378,
+      "decision_ms": 34.312,
+      "request": {
+        "state": "Operator instruction: 不要进攻，先防御。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.971,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.378,
+          "choice": "defend",
+          "probabilities": {
+            "attack": 0.0012,
+            "defend": 0.9944,
+            "retreat": 0.003,
+            "hold": 0.0014
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 77
+    },
+    {
+      "command": "不要防御了，集中火力攻击。",
+      "expected": "attack",
+      "group": "development",
+      "match": true,
+      "http_ms": 47.163,
+      "source": "laya",
+      "action": "attack",
+      "probabilities": {
+        "attack": 0.9936,
+        "defend": 0.0047,
+        "retreat": 0.0005,
+        "hold": 0.0012
+      },
+      "npu_ms": 31.563,
+      "decision_ms": 33.391,
+      "request": {
+        "state": "Operator instruction: 不要防御了，集中火力攻击。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.9687,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.563,
+          "choice": "attack",
+          "probabilities": {
+            "attack": 0.9936,
+            "defend": 0.0047,
+            "retreat": 0.0005,
+            "hold": 0.0012
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 79
+    },
+    {
+      "command": "敌人太多了，先躲起来。",
+      "expected": "retreat",
+      "group": "development",
+      "match": true,
+      "http_ms": 43.764,
+      "source": "laya",
+      "action": "retreat",
+      "probabilities": {
+        "attack": 0.0042,
+        "defend": 0.0661,
+        "retreat": 0.8879,
+        "hold": 0.0418
+      },
+      "npu_ms": 31.473,
+      "decision_ms": 34.235,
+      "request": {
+        "state": "Operator instruction: 敌人太多了，先躲起来。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.682,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.473,
+          "choice": "retreat",
+          "probabilities": {
+            "attack": 0.0042,
+            "defend": 0.0661,
+            "retreat": 0.8879,
+            "hold": 0.0418
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 79
+    },
+    {
+      "command": "停止射击，等我指令。",
+      "expected": "hold",
+      "group": "development",
+      "match": false,
+      "http_ms": 58.025,
+      "source": "laya",
+      "action": "attack",
+      "probabilities": {
+        "attack": 0.715,
+        "defend": 0.2105,
+        "retreat": 0.0213,
+        "hold": 0.0532
+      },
+      "npu_ms": 32.107,
+      "decision_ms": 37.395,
+      "request": {
+        "state": "Operator instruction: 停止射击，等我指令。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.4186,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 32.107,
+          "choice": "attack",
+          "probabilities": {
+            "attack": 0.715,
+            "defend": 0.2105,
+            "retreat": 0.0213,
+            "hold": 0.0532
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 78
+    },
+    {
+      "command": "先别撤退，架盾挡住。",
+      "expected": "defend",
+      "group": "development",
+      "match": true,
+      "http_ms": 42.376,
+      "source": "laya",
+      "action": "defend",
+      "probabilities": {
+        "attack": 0.0001,
+        "defend": 0.9965,
+        "retreat": 0.0012,
+        "hold": 0.0022
+      },
+      "npu_ms": 31.355,
+      "decision_ms": 33.95,
+      "request": {
+        "state": "Operator instruction: 先别撤退，架盾挡住。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.9811,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.355,
+          "choice": "defend",
+          "probabilities": {
+            "attack": 0.0001,
+            "defend": 0.9965,
+            "retreat": 0.0012,
+            "hold": 0.0022
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 80
+    },
+    {
+      "command": "举起护盾保护机体。",
+      "expected": "defend",
+      "group": "additional",
+      "match": true,
+      "http_ms": 42.872,
+      "source": "laya",
+      "action": "defend",
+      "probabilities": {
+        "attack": 0.0001,
+        "defend": 0.9972,
+        "retreat": 0.0005,
+        "hold": 0.0022
+      },
+      "npu_ms": 30.883,
+      "decision_ms": 33.036,
+      "request": {
+        "state": "Operator instruction: 举起护盾保护机体。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.9847,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 30.883,
+          "choice": "defend",
+          "probabilities": {
+            "attack": 0.0001,
+            "defend": 0.9972,
+            "retreat": 0.0005,
+            "hold": 0.0022
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 80
+    },
+    {
+      "command": "用火力压制前面的敌人。",
+      "expected": "attack",
+      "group": "additional",
+      "match": true,
+      "http_ms": 53.748,
+      "source": "laya",
+      "action": "attack",
+      "probabilities": {
+        "attack": 0.9687,
+        "defend": 0.0247,
+        "retreat": 0.0003,
+        "hold": 0.0063
+      },
+      "npu_ms": 31.93,
+      "decision_ms": 34.677,
+      "request": {
+        "state": "Operator instruction: 用火力压制前面的敌人。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.8869,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.93,
+          "choice": "attack",
+          "probabilities": {
+            "attack": 0.9687,
+            "defend": 0.0247,
+            "retreat": 0.0003,
+            "hold": 0.0063
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 77
+    },
+    {
+      "command": "先找个地方躲避攻击。",
+      "expected": "retreat",
+      "group": "additional",
+      "match": false,
+      "http_ms": 42.713,
+      "source": "laya",
+      "action": "defend",
+      "probabilities": {
+        "attack": 0.0072,
+        "defend": 0.957,
+        "retreat": 0.0244,
+        "hold": 0.0114
+      },
+      "npu_ms": 31.234,
+      "decision_ms": 33.195,
+      "request": {
+        "state": "Operator instruction: 先找个地方躲避攻击。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.8418,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.234,
+          "choice": "defend",
+          "probabilities": {
+            "attack": 0.0072,
+            "defend": 0.957,
+            "retreat": 0.0244,
+            "hold": 0.0114
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 78
+    },
+    {
+      "command": "在原来的位置等待。",
+      "expected": "hold",
+      "group": "additional",
+      "match": true,
+      "http_ms": 43.145,
+      "source": "laya",
+      "action": "hold",
+      "probabilities": {
+        "attack": 0.0001,
+        "defend": 0.0041,
+        "retreat": 0.0004,
+        "hold": 0.9955
+      },
+      "npu_ms": 31.761,
+      "decision_ms": 33.842,
+      "request": {
+        "state": "Operator instruction: 在原来的位置等待。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.978,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.761,
+          "choice": "hold",
+          "probabilities": {
+            "attack": 0.0001,
+            "defend": 0.0041,
+            "retreat": 0.0004,
+            "hold": 0.9955
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 76
+    },
+    {
+      "command": "暂时不要冲锋，展开护盾。",
+      "expected": "defend",
+      "group": "additional",
+      "match": true,
+      "http_ms": 43.538,
+      "source": "laya",
+      "action": "defend",
+      "probabilities": {
+        "attack": 0.0002,
+        "defend": 0.9955,
+        "retreat": 0.0003,
+        "hold": 0.0041
+      },
+      "npu_ms": 32.166,
+      "decision_ms": 34.526,
+      "request": {
+        "state": "Operator instruction: 暂时不要冲锋，展开护盾。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.9779,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 32.166,
+          "choice": "defend",
+          "probabilities": {
+            "attack": 0.0002,
+            "defend": 0.9955,
+            "retreat": 0.0003,
+            "hold": 0.0041
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 81
+    },
+    {
+      "command": "不用躲了，开始攻击对手。",
+      "expected": "attack",
+      "group": "additional",
+      "match": true,
+      "http_ms": 55.513,
+      "source": "laya",
+      "action": "attack",
+      "probabilities": {
+        "attack": 0.9981,
+        "defend": 0.0014,
+        "retreat": 0.0004,
+        "hold": 0.0002
+      },
+      "npu_ms": 31.9,
+      "decision_ms": 34.034,
+      "request": {
+        "state": "Operator instruction: 不用躲了，开始攻击对手。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.9889,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.9,
+          "choice": "attack",
+          "probabilities": {
+            "attack": 0.9981,
+            "defend": 0.0014,
+            "retreat": 0.0004,
+            "hold": 0.0002
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 80
+    },
+    {
+      "command": "离敌人远一点，找掩体躲起来。",
+      "expected": "retreat",
+      "group": "additional",
+      "match": false,
+      "http_ms": 45.602,
+      "source": "laya",
+      "action": "defend",
+      "probabilities": {
+        "attack": 0.0012,
+        "defend": 0.9936,
+        "retreat": 0.0022,
+        "hold": 0.003
+      },
+      "npu_ms": 32.421,
+      "decision_ms": 36.742,
+      "request": {
+        "state": "Operator instruction: 离敌人远一点，找掩体躲起来。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.9674,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 32.421,
+          "choice": "defend",
+          "probabilities": {
+            "attack": 0.0012,
+            "defend": 0.9936,
+            "retreat": 0.0022,
+            "hold": 0.003
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 83
+    },
+    {
+      "command": "留在这里，等下一条命令。",
+      "expected": "hold",
+      "group": "additional",
+      "match": true,
+      "http_ms": 44.592,
+      "source": "laya",
+      "action": "hold",
+      "probabilities": {
+        "attack": 0.0005,
+        "defend": 0.0516,
+        "retreat": 0.0061,
+        "hold": 0.9418
+      },
+      "npu_ms": 31.123,
+      "decision_ms": 34.346,
+      "request": {
+        "state": "Operator instruction: 留在这里，等下一条命令。",
+        "questions": {
+          "action": {
+            "type": "choice",
+            "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+            "criteria": {
+              "attack": "Attack the enemy. Advance and fire.",
+              "defend": "Defend. Raise the shield and block incoming fire.",
+              "retreat": "Retreat. Move away and take cover.",
+              "hold": "Hold position. Stop moving and firing."
+            }
+          }
+        }
+      },
+      "raw_answers": {
+        "action": {
+          "type": "choice",
+          "confidence": 0.824,
+          "action": {
+            "act_probability": 1.0
+          },
+          "npu_latency_ms": 31.123,
+          "choice": "hold",
+          "probabilities": {
+            "attack": 0.0005,
+            "defend": 0.0516,
+            "retreat": 0.0061,
+            "hold": 0.9418
+          }
+        }
+      },
+      "model": "laya-multilingual",
+      "engine": {
+        "provider": "AXCLRTExecutionProvider",
+        "device_id": 0
+      },
+      "input_tokens": 79
+    }
+  ],
+  "behaviors": [
+    {
+      "action": "defend",
+      "decision": {
+        "source": "laya",
+        "command": "打开护盾，挡住炮火。",
+        "action": "defend",
+        "probabilities": {
+          "attack": 0.0004,
+          "defend": 0.9991,
+          "retreat": 0.0002,
+          "hold": 0.0003
+        },
+        "npu_ms": 31.985,
+        "decision_ms": 34.385,
+        "request": {
+          "state": "Operator instruction: 打开护盾，挡住炮火。",
+          "questions": {
+            "action": {
+              "type": "choice",
+              "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+              "criteria": {
+                "attack": "Attack the enemy. Advance and fire.",
+                "defend": "Defend. Raise the shield and block incoming fire.",
+                "retreat": "Retreat. Move away and take cover.",
+                "hold": "Hold position. Stop moving and firing."
+              }
+            }
+          }
+        },
+        "raw_answers": {
+          "action": {
+            "type": "choice",
+            "confidence": 0.9939,
+            "action": {
+              "act_probability": 1.0
+            },
+            "npu_latency_ms": 31.985,
+            "choice": "defend",
+            "probabilities": {
+              "attack": 0.0004,
+              "defend": 0.9991,
+              "retreat": 0.0002,
+              "hold": 0.0003
+            }
+          }
+        },
+        "model": "laya-multilingual",
+        "engine": {
+          "provider": "AXCLRTExecutionProvider",
+          "device_id": 0
+        },
+        "input_tokens": 80
+      },
+      "state": {
+        "seed": 42,
+        "difficulty": "training",
+        "time": 6.0,
+        "action": "defend",
+        "status": "active",
+        "player": {
+          "x": -7.0,
+          "z": 5.0,
+          "yaw": 2.060753653048625,
+          "armor": 100.0,
+          "energy": 51.99999999999954,
+          "shield": true,
+          "moving": false
+        },
+        "enemies": [
+          {
+            "id": 1,
+            "x": 8.0,
+            "z": -3.0,
+            "armor": 72.0,
+            "yaw": -1.0808390005411683,
+            "cooldown": 0.24999999999999967
+          }
+        ],
+        "covers": [
+          {
+            "id": 1,
+            "x": -3.0,
+            "z": 1.0,
+            "w": 3.0,
+            "d": 1.6
+          },
+          {
+            "id": 2,
+            "x": 4.0,
+            "z": -5.0,
+            "w": 3.0,
+            "d": 1.6
+          },
+          {
+            "id": 3,
+            "x": -9.0,
+            "z": -5.0,
+            "w": 2.6,
+            "d": 1.6
+          }
+        ],
+        "projectiles": [],
+        "effects": [],
+        "path": [],
+        "stats": {
+          "shots": 0,
+          "hits": 0,
+          "blocked": 2,
+          "kills": 0,
+          "damage_taken": 0.0
+        },
+        "event_count": 0
+      }
+    },
+    {
+      "action": "retreat",
+      "decision": {
+        "source": "laya",
+        "command": "先撤到掩体后。",
+        "action": "retreat",
+        "probabilities": {
+          "attack": 0.0005,
+          "defend": 0.0016,
+          "retreat": 0.9967,
+          "hold": 0.0012
+        },
+        "npu_ms": 31.57,
+        "decision_ms": 33.936,
+        "request": {
+          "state": "Operator instruction: 先撤到掩体后。",
+          "questions": {
+            "action": {
+              "type": "choice",
+              "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+              "criteria": {
+                "attack": "Attack the enemy. Advance and fire.",
+                "defend": "Defend. Raise the shield and block incoming fire.",
+                "retreat": "Retreat. Move away and take cover.",
+                "hold": "Hold position. Stop moving and firing."
+              }
+            }
+          }
+        },
+        "raw_answers": {
+          "action": {
+            "type": "choice",
+            "confidence": 0.9816,
+            "action": {
+              "act_probability": 1.0
+            },
+            "npu_latency_ms": 31.57,
+            "choice": "retreat",
+            "probabilities": {
+              "attack": 0.0005,
+              "defend": 0.0016,
+              "retreat": 0.9967,
+              "hold": 0.0012
+            }
+          }
+        },
+        "model": "laya-multilingual",
+        "engine": {
+          "provider": "AXCLRTExecutionProvider",
+          "device_id": 0
+        },
+        "input_tokens": 78
+      },
+      "state": {
+        "seed": 42,
+        "difficulty": "training",
+        "time": 8.0,
+        "action": "retreat",
+        "status": "active",
+        "player": {
+          "x": -6.0,
+          "z": 1.0,
+          "yaw": 1.849095985800008,
+          "armor": 100.0,
+          "energy": 100,
+          "shield": false,
+          "moving": false
+        },
+        "enemies": [
+          {
+            "id": 1,
+            "x": 8.0,
+            "z": -3.0,
+            "armor": 72.0,
+            "yaw": -1.2924966677897853,
+            "cooldown": 0.4499999999999996
+          }
+        ],
+        "covers": [
+          {
+            "id": 1,
+            "x": -3.0,
+            "z": 1.0,
+            "w": 3.0,
+            "d": 1.6
+          },
+          {
+            "id": 2,
+            "x": 4.0,
+            "z": -5.0,
+            "w": 3.0,
+            "d": 1.6
+          },
+          {
+            "id": 3,
+            "x": -9.0,
+            "z": -5.0,
+            "w": 2.6,
+            "d": 1.6
+          }
+        ],
+        "projectiles": [],
+        "effects": [],
+        "path": [],
+        "stats": {
+          "shots": 0,
+          "hits": 0,
+          "blocked": 0,
+          "kills": 0,
+          "damage_taken": 0.0
+        },
+        "event_count": 0
+      }
+    },
+    {
+      "action": "hold",
+      "decision": {
+        "source": "laya",
+        "command": "原地待命。",
+        "action": "hold",
+        "probabilities": {
+          "attack": 0.0015,
+          "defend": 0.0594,
+          "retreat": 0.0095,
+          "hold": 0.9296
+        },
+        "npu_ms": 31.531,
+        "decision_ms": 34.615,
+        "request": {
+          "state": "Operator instruction: 原地待命。",
+          "questions": {
+            "action": {
+              "type": "choice",
+              "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+              "criteria": {
+                "attack": "Attack the enemy. Advance and fire.",
+                "defend": "Defend. Raise the shield and block incoming fire.",
+                "retreat": "Retreat. Move away and take cover.",
+                "hold": "Hold position. Stop moving and firing."
+              }
+            }
+          }
+        },
+        "raw_answers": {
+          "action": {
+            "type": "choice",
+            "confidence": 0.7911,
+            "action": {
+              "act_probability": 1.0
+            },
+            "npu_latency_ms": 31.531,
+            "choice": "hold",
+            "probabilities": {
+              "attack": 0.0015,
+              "defend": 0.0594,
+              "retreat": 0.0095,
+              "hold": 0.9296
+            }
+          }
+        },
+        "model": "laya-multilingual",
+        "engine": {
+          "provider": "AXCLRTExecutionProvider",
+          "device_id": 0
+        },
+        "input_tokens": 76
+      },
+      "state": {
+        "seed": 42,
+        "difficulty": "training",
+        "time": 3.0,
+        "action": "hold",
+        "status": "active",
+        "player": {
+          "x": -7.0,
+          "z": 5.0,
+          "yaw": 2.060753653048625,
+          "armor": 95.0,
+          "energy": 100,
+          "shield": false,
+          "moving": false
+        },
+        "enemies": [
+          {
+            "id": 1,
+            "x": 8.0,
+            "z": -3.0,
+            "armor": 72.0,
+            "yaw": -1.0808390005411683,
+            "cooldown": 1.05
+          }
+        ],
+        "covers": [
+          {
+            "id": 1,
+            "x": -3.0,
+            "z": 1.0,
+            "w": 3.0,
+            "d": 1.6
+          },
+          {
+            "id": 2,
+            "x": 4.0,
+            "z": -5.0,
+            "w": 3.0,
+            "d": 1.6
+          },
+          {
+            "id": 3,
+            "x": -9.0,
+            "z": -5.0,
+            "w": 2.6,
+            "d": 1.6
+          }
+        ],
+        "projectiles": [],
+        "effects": [
+          {
+            "id": 2,
+            "kind": "muzzle_red",
+            "x": 8.0,
+            "z": -3.0,
+            "born": 1.850000000000001
+          },
+          {
+            "id": 3,
+            "kind": "hit",
+            "x": -7.0,
+            "z": 5.0,
+            "born": 2.549999999999999
+          }
+        ],
+        "path": [],
+        "stats": {
+          "shots": 0,
+          "hits": 0,
+          "blocked": 0,
+          "kills": 0,
+          "damage_taken": 5.0
+        },
+        "event_count": 0
+      }
+    },
+    {
+      "action": "attack",
+      "decision": {
+        "source": "laya",
+        "command": "向敌人开火。",
+        "action": "attack",
+        "probabilities": {
+          "attack": 0.9993,
+          "defend": 0.0004,
+          "retreat": 0.0002,
+          "hold": 0.0002
+        },
+        "npu_ms": 31.348,
+        "decision_ms": 35.09,
+        "request": {
+          "state": "Operator instruction: 向敌人开火。",
+          "questions": {
+            "action": {
+              "type": "choice",
+              "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+              "criteria": {
+                "attack": "Attack the enemy. Advance and fire.",
+                "defend": "Defend. Raise the shield and block incoming fire.",
+                "retreat": "Retreat. Move away and take cover.",
+                "hold": "Hold position. Stop moving and firing."
+              }
+            }
+          }
+        },
+        "raw_answers": {
+          "action": {
+            "type": "choice",
+            "confidence": 0.9951,
+            "action": {
+              "act_probability": 1.0
+            },
+            "npu_latency_ms": 31.348,
+            "choice": "attack",
+            "probabilities": {
+              "attack": 0.9993,
+              "defend": 0.0004,
+              "retreat": 0.0002,
+              "hold": 0.0002
+            }
+          }
+        },
+        "model": "laya-multilingual",
+        "engine": {
+          "provider": "AXCLRTExecutionProvider",
+          "device_id": 0
+        },
+        "input_tokens": 76
+      },
+      "state": {
+        "seed": 42,
+        "difficulty": "training",
+        "time": 3.0,
+        "action": "attack",
+        "status": "won",
+        "player": {
+          "x": -0.4060303038033002,
+          "z": 2.4060303038033,
+          "yaw": 2.142315072438779,
+          "armor": 95.0,
+          "energy": 88.64999999999966,
+          "shield": false,
+          "moving": true
+        },
+        "enemies": [
+          {
+            "id": 1,
+            "x": 8.0,
+            "z": -3.0,
+            "armor": 0,
+            "yaw": -0.9992775811510144,
+            "cooldown": 1.05
+          }
+        ],
+        "covers": [
+          {
+            "id": 1,
+            "x": -3.0,
+            "z": 1.0,
+            "w": 3.0,
+            "d": 1.6
+          },
+          {
+            "id": 2,
+            "x": 4.0,
+            "z": -5.0,
+            "w": 3.0,
+            "d": 1.6
+          },
+          {
+            "id": 3,
+            "x": -9.0,
+            "z": -5.0,
+            "w": 2.6,
+            "d": 1.6
+          }
+        ],
+        "projectiles": [],
+        "effects": [
+          {
+            "id": 10,
+            "kind": "muzzle_red",
+            "x": 8.0,
+            "z": -3.0,
+            "born": 1.850000000000001
+          },
+          {
+            "id": 11,
+            "kind": "hit",
+            "x": 8.0,
+            "z": -3.0,
+            "born": 2.25
+          },
+          {
+            "id": 12,
+            "kind": "hit",
+            "x": -2.0,
+            "z": 3.0,
+            "born": 2.3
+          },
+          {
+            "id": 14,
+            "kind": "muzzle_blue",
+            "x": -1.1600000000000006,
+            "z": 3.0,
+            "born": 2.5999999999999988
+          },
+          {
+            "id": 15,
+            "kind": "hit",
+            "x": 8.0,
+            "z": -3.0,
+            "born": 2.9999999999999973
+          },
+          {
+            "id": 16,
+            "kind": "explosion",
+            "x": 8.0,
+            "z": -3.0,
+            "born": 2.9999999999999973
+          }
+        ],
+        "path": [],
+        "stats": {
+          "shots": 4,
+          "hits": 4,
+          "blocked": 0,
+          "kills": 1,
+          "damage_taken": 5.0
+        },
+        "event_count": 0
+      }
+    }
+  ],
+  "mixed": {
+    "decisions": [
+      {
+        "source": "laya",
+        "command": "别开火，先保护自己。",
+        "action": "defend",
+        "probabilities": {
+          "attack": 0.0053,
+          "defend": 0.8273,
+          "retreat": 0.154,
+          "hold": 0.0134
+        },
+        "npu_ms": 31.182,
+        "decision_ms": 34.203,
+        "request": {
+          "state": "Operator instruction: 别开火，先保护自己。",
+          "questions": {
+            "action": {
+              "type": "choice",
+              "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+              "criteria": {
+                "attack": "Attack the enemy. Advance and fire.",
+                "defend": "Defend. Raise the shield and block incoming fire.",
+                "retreat": "Retreat. Move away and take cover.",
+                "hold": "Hold position. Stop moving and firing."
+              }
+            }
+          }
+        },
+        "raw_answers": {
+          "action": {
+            "type": "choice",
+            "confidence": 0.6173,
+            "action": {
+              "act_probability": 1.0
+            },
+            "npu_latency_ms": 31.182,
+            "choice": "defend",
+            "probabilities": {
+              "attack": 0.0053,
+              "defend": 0.8273,
+              "retreat": 0.154,
+              "hold": 0.0134
+            }
+          }
+        },
+        "model": "laya-multilingual",
+        "engine": {
+          "provider": "AXCLRTExecutionProvider",
+          "device_id": 0
+        },
+        "input_tokens": 79
+      },
+      {
+        "source": "laya",
+        "command": "先撤到掩体后。",
+        "action": "retreat",
+        "probabilities": {
+          "attack": 0.0005,
+          "defend": 0.0016,
+          "retreat": 0.9967,
+          "hold": 0.0012
+        },
+        "npu_ms": 32.844,
+        "decision_ms": 37.089,
+        "request": {
+          "state": "Operator instruction: 先撤到掩体后。",
+          "questions": {
+            "action": {
+              "type": "choice",
+              "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+              "criteria": {
+                "attack": "Attack the enemy. Advance and fire.",
+                "defend": "Defend. Raise the shield and block incoming fire.",
+                "retreat": "Retreat. Move away and take cover.",
+                "hold": "Hold position. Stop moving and firing."
+              }
+            }
+          }
+        },
+        "raw_answers": {
+          "action": {
+            "type": "choice",
+            "confidence": 0.9816,
+            "action": {
+              "act_probability": 1.0
+            },
+            "npu_latency_ms": 32.844,
+            "choice": "retreat",
+            "probabilities": {
+              "attack": 0.0005,
+              "defend": 0.0016,
+              "retreat": 0.9967,
+              "hold": 0.0012
+            }
+          }
+        },
+        "model": "laya-multilingual",
+        "engine": {
+          "provider": "AXCLRTExecutionProvider",
+          "device_id": 0
+        },
+        "input_tokens": 78
+      },
+      {
+        "source": "laya",
+        "command": "原地待命。",
+        "action": "hold",
+        "probabilities": {
+          "attack": 0.0015,
+          "defend": 0.0594,
+          "retreat": 0.0095,
+          "hold": 0.9296
+        },
+        "npu_ms": 31.583,
+        "decision_ms": 34.315,
+        "request": {
+          "state": "Operator instruction: 原地待命。",
+          "questions": {
+            "action": {
+              "type": "choice",
+              "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+              "criteria": {
+                "attack": "Attack the enemy. Advance and fire.",
+                "defend": "Defend. Raise the shield and block incoming fire.",
+                "retreat": "Retreat. Move away and take cover.",
+                "hold": "Hold position. Stop moving and firing."
+              }
+            }
+          }
+        },
+        "raw_answers": {
+          "action": {
+            "type": "choice",
+            "confidence": 0.7911,
+            "action": {
+              "act_probability": 1.0
+            },
+            "npu_latency_ms": 31.583,
+            "choice": "hold",
+            "probabilities": {
+              "attack": 0.0015,
+              "defend": 0.0594,
+              "retreat": 0.0095,
+              "hold": 0.9296
+            }
+          }
+        },
+        "model": "laya-multilingual",
+        "engine": {
+          "provider": "AXCLRTExecutionProvider",
+          "device_id": 0
+        },
+        "input_tokens": 76
+      },
+      {
+        "source": "laya",
+        "command": "继续进攻。",
+        "action": "attack",
+        "probabilities": {
+          "attack": 0.986,
+          "defend": 0.0064,
+          "retreat": 0.003,
+          "hold": 0.0047
+        },
+        "npu_ms": 31.67,
+        "decision_ms": 35.444,
+        "request": {
+          "state": "Operator instruction: 继续进攻。",
+          "questions": {
+            "action": {
+              "type": "choice",
+              "instructions": "Which action does the operator request? Follow the final intent, including negation.",
+              "criteria": {
+                "attack": "Attack the enemy. Advance and fire.",
+                "defend": "Defend. Raise the shield and block incoming fire.",
+                "retreat": "Retreat. Move away and take cover.",
+                "hold": "Hold position. Stop moving and firing."
+              }
+            }
+          }
+        },
+        "raw_answers": {
+          "action": {
+            "type": "choice",
+            "confidence": 0.9362,
+            "action": {
+              "act_probability": 1.0
+            },
+            "npu_latency_ms": 31.67,
+            "choice": "attack",
+            "probabilities": {
+              "attack": 0.986,
+              "defend": 0.0064,
+              "retreat": 0.003,
+              "hold": 0.0047
+            }
+          }
+        },
+        "model": "laya-multilingual",
+        "engine": {
+          "provider": "AXCLRTExecutionProvider",
+          "device_id": 0
+        },
+        "input_tokens": 75
+      }
+    ],
+    "state": {
+      "seed": 42,
+      "difficulty": "challenge",
+      "time": 14.1,
+      "action": "attack",
+      "status": "lost",
+      "player": {
+        "x": 0.0,
+        "z": 0.72,
+        "yaw": 2.9386635533817884,
+        "armor": 0,
+        "energy": 89.34999999999965,
+        "shield": false,
+        "moving": false
+      },
+      "enemies": [
+        {
+          "id": 1,
+          "x": 8.0,
+          "z": -3.0,
+          "armor": 0,
+          "yaw": -1.135538653936758,
+          "cooldown": 0.49999999999999917
+        },
+        {
+          "id": 2,
+          "x": 11.0,
+          "z": 5.0,
+          "armor": 72.0,
+          "yaw": -1.9418630849863512,
+          "cooldown": 0.9499999999999995
+        },
+        {
+          "id": 3,
+          "x": 2.0,
+          "z": -9.0,
+          "armor": 72.0,
+          "yaw": -0.20292910020800464,
+          "cooldown": 1.2999999999999998
+        }
+      ],
+      "covers": [
+        {
+          "id": 1,
+          "x": -3.0,
+          "z": 1.0,
+          "w": 3.0,
+          "d": 1.6
+        },
+        {
+          "id": 2,
+          "x": 4.0,
+          "z": -5.0,
+          "w": 3.0,
+          "d": 1.6
+        },
+        {
+          "id": 3,
+          "x": -9.0,
+          "z": -5.0,
+          "w": 2.6,
+          "d": 1.6
+        },
+        {
+          "id": 4,
+          "x": -5.377727226059504,
+          "z": 2.4764645738703392,
+          "w": 2.8,
+          "d": 1.6
+        }
+      ],
+      "projectiles": [
+        {
+          "id": 73,
+          "x": 1.163612371238954,
+          "z": -4.935156124221315,
+          "vx": -4.2323229407185465,
+          "vz": 20.569089491892136,
+          "team": "enemy",
+          "damage": 5,
+          "born": 14.000000000000064
+        }
+      ],
+      "effects": [
+        {
+          "id": 63,
+          "kind": "muzzle_red",
+          "x": 8.0,
+          "z": -3.0,
+          "born": 13.05000000000005
+        },
+        {
+          "id": 64,
+          "kind": "hit",
+          "x": -0.7030151519016501,
+          "z": 2.70301515190165,
+          "born": 13.05000000000005
+        },
+        {
+          "id": 65,
+          "kind": "hit",
+          "x": 8.0,
+          "z": -3.0,
+          "born": 13.150000000000052
+        },
+        {
+          "id": 66,
+          "kind": "hit",
+          "x": -0.010050506338833615,
+          "z": 2.0100505063388336,
+          "born": 13.400000000000055
+        },
+        {
+          "id": 68,
+          "kind": "muzzle_blue",
+          "x": 0.0,
+          "z": 1.5800000000000003,
+          "born": 13.600000000000058
+        },
+        {
+          "id": 70,
+          "kind": "muzzle_red",
+          "x": 11.0,
+          "z": 5.0,
+          "born": 13.650000000000059
+        },
+        {
+          "id": 71,
+          "kind": "hit",
+          "x": 8.0,
+          "z": -3.0,
+          "born": 13.950000000000063
+        },
+        {
+          "id": 72,
+          "kind": "explosion",
+          "x": 8.0,
+          "z": -3.0,
+          "born": 13.950000000000063
+        },
+        {
+          "id": 74,
+          "kind": "muzzle_red",
+          "x": 2.0,
+          "z": -9.0,
+          "born": 14.000000000000064
+        },
+        {
+          "id": 75,
+          "kind": "hit",
+          "x": 0.0,
+          "z": 0.72,
+          "born": 14.100000000000065
+        },
+        {
+          "id": 76,
+          "kind": "explosion",
+          "x": 0.0,
+          "z": 0.72,
+          "born": 14.100000000000065
+        }
+      ],
+      "path": [],
+      "stats": {
+        "shots": 4,
+        "hits": 4,
+        "blocked": 4,
+        "kills": 1,
+        "damage_taken": 75.0
+      },
+      "event_count": 3
+    }
+  },
+  "summary": {
+    "cases": 22,
+    "matches": 19,
+    "npu_calls": 30,
+    "mean_npu_ms": 31.704166666666666,
+    "min_npu_ms": 30.506,
+    "max_npu_ms": 35.606
+  }
+}
